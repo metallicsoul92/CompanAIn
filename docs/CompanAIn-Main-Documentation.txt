@@ -1,0 +1,111 @@
+CompanAIn Documentation
+
+Version 0.1
+
+Written in C++ with Qt
+
+Author: Clim Jark
+
+Revision History:
+    October 12th, 2016 - Initial documentation
+
+
+
+What is CompanAIn?
+    CompanAIn is an Artificial Intelligence application that can be interacted with to help
+find information on various subjects. This is done through a module that can parse HTML data,
+and then stored in a Memory Object.
+
+
+What are these Memory Objects you refer to?
+    The CAIMemory class is a structure that can represent data in a variety of ways. It is based
+off of a tree structure.
+
+    CAIMemory:
+    string name;
+    Variant data;
+    CAIMemory *parent;
+    Vector<CAIMemory*> associatedMemories;
+
+    These will be manipulated to add more associated memories, or even create new memories. One way
+a person can be described through structure can be shown here:
+
+    CAIMemory human;
+    name: Clim;
+    data: "A human being"
+    parent: nullptr  //this represents a root memory
+    associatedMemories:
+        CAIMemory:
+        name: Age
+        data: 24
+        parent: human;
+        associatedMemories:
+            CAIMemory:
+            name: Birthday
+            data: Vector3(8,26,1992)
+            parent: Age
+        CAIMemory:
+        name: Weight
+        data: 170
+        parent: human
+        associatedMemories:
+            NULL
+
+
+What are CAIModules?
+    CAIModules are the base class for modules that operate within the AI.  These can include
+Information researching through webcrawling, analysis of programs on the users computer via piping
+of the commandline to files to be parsed.
+
+
+    CAIModule Information:
+
+    The CAIModule is a virtual class which is inherited by other modules.
+Modules are used to manipulate Memory through inputs and outputs.Modules
+get loaded into the AICore, and each are asyncronously updating constanly.
+
+
+Module Ideas:
+
+    Conversation-
+        reads from conversationBuffer (buffer file inside data folder). input from the console
+    is passed into the buffer, during each update, it is checked to see if there is some text. If it is not empty,
+    it is sent into this module to be determined how the AI should react. After, the conversationBuffer is cleared.
+
+    HTMLParser-
+        This is coupled slightly to the WebCrawler, as this is used to gather information out of html files, by
+    creating a more readable version of the data to be parsed by the AI and sent to memory modules accordingly.
+
+    WebCrawler-
+        When a user asks about a certain item, the AI will search one or more search engines, and parse html according
+    to the users request.  The websites are created into memories, the data being their URL.  Their associated memories
+    may include the subject, and information about the subject.
+
+    Analysis-
+        The AI should be able to create files and directories, and possibly create tests such as hello world in different
+    languages, and determine their metadata, including compile time, run time, size of source, size of binary, as well as
+    determine the best possible structures of programming languages.
+
+    InformationSorter-
+        This is similar to Analysis, it will sort information in multiple memories, and try to create new ones that are
+    used for more specific reasons of thought
+
+
+
+How am i suppose to interact with it?
+    There will be a Graphical User Interface (made via QT)
+
+
+GUI Interactions:
+
+    QTextArea console->output:  Program- READ/WRITE
+                                user - READ
+
+    QLineText console->input:  Program- READ
+                               user -READ/WRITE
+
+     console->input->onKeyPressed() ??? if key = ENTER, pass input into Conversation Module
+
+
+
+
