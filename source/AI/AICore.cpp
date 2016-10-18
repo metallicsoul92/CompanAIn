@@ -66,10 +66,12 @@ void AICore::setInputString(){
 void AICore::setOutputString(QString data)
 {
     m_outputString = data;
+    emit SendOutput(data);
 }
 void AICore::setOutputString()
 {
     m_outputString.clear();
+    emit SendOutput(m_outputString);
 }
 
 

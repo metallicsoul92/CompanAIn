@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow), m_core(new clim::AICore())
 {
     ui->setupUi(this);
+    connect(this->m_core,SIGNAL(SendOutput(this->m_core->getOutputString())),this,SLOT(outputData(QString)));
 }
 
 MainWindow::~MainWindow()

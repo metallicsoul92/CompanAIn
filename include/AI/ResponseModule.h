@@ -15,16 +15,6 @@ namespace clim{
         RESPONSE_COMPLOOK, // Requires a lookup on the computer being used
         RESPONSE_DEFAULT // this is what is set when the constructor is made
     };
-    static QVector<Triple<QString,ResponseStyle,QString>> ResponseList(){
-        QVector<Triple<QString,ResponseStyle,QString>> responses;
-        responses = QVector<Triple<QString,ResponseStyle,QString>>();
-        responses.resize(150);
-        responses.push_back(Triple<QString,ResponseStyle,QString>("Hello",
-                                                                  ResponseStyle::RESPONSE_BASIC,
-                                                                  "Hello User"
-                                                                  ));
-        return responses;
-    }
 
     class ResponseModule : public CAIModule{
         Q_OBJECT

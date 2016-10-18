@@ -16,6 +16,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
+
 signals:
     void inputReceived();
 
@@ -23,7 +25,9 @@ private slots:
     void on_actionExit_triggered();
 
     void on_lineEdit_returnPressed();
+    void outputData(QString data);
 
+    
 private:
     Ui::MainWindow *ui;
     clim::AICore *m_core;

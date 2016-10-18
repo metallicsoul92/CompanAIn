@@ -9,7 +9,6 @@ ResponseModule::ResponseModule():CAIModule("Response-Module")
 
 ResponseModule::ResponseModule(AICore *core):CAIModule("Response-Module",core)
 {
-    connect(getAI(),this->getAI()->InputReceived(),this,&this->Respond(QString));
 }
 
 void ResponseModule::update()
@@ -28,9 +27,7 @@ void ResponseModule::update()
 
 void ResponseModule::Respond(QString data)
 {
-    switch(getAI()->getInputString()){
-
-    }
+    getAI()->setOutputString(data);
 }
 
 

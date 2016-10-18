@@ -6,7 +6,13 @@
 #include "CAIModule.h"
 #include "CAIMemory.h"
 
+
+
+class MainWindow;
+
+
 namespace clim{
+
 
     class AICore : public QObject{
         Q_OBJECT
@@ -15,7 +21,7 @@ namespace clim{
         QVector<CAIModule*> m_modules;
         QVector<CAIMemory*> m_memory;
         QString m_inputString;
-        QString m_outputString;
+        QString m_outputString;      
 
     public:
         AICore();
@@ -42,7 +48,7 @@ namespace clim{
 
     signals:
         void InputReceived();
-
+        void SendOutput(QString data);
 
 
     };
